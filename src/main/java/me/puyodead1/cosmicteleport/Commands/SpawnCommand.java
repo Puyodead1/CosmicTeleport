@@ -34,16 +34,19 @@ public class SpawnCommand implements CommandExecutor {
                 final Location spawnLocation = player.getWorld().getSpawnLocation();
                 final int teleportDelay = cosmicTeleport.getConfig().getInt("settings.teleport delay");
 
-                player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, teleportDelay*20, 1));
-                player.getWorld().playEffect(player.getLocation(), Effect.PORTAL, null);
+                player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 99*20, 2));
+                player.getWorld().playEffect(new Location(player.getWorld(), player.getLocation().getX(), player.getLocation().getY()+5, player.getLocation().getZ()), Effect.PORTAL, 1);
 
                 BukkitScheduler scheduler = getServer().getScheduler();
                 scheduler.scheduleSyncDelayedTask(cosmicTeleport, new Runnable() {
                     @Override
                     public void run() {
                         player.teleport(spawnLocation);
+
+                        player.removePotionEffect(PotionEffectType.CONFUSION);
                     }
                 }, teleportDelay*20L);
+
                 return true;
             } else {
                 // no permission
