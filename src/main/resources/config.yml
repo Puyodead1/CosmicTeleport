@@ -1,0 +1,5 @@
+# Made by Puyodead1
+settings:
+  teleport delay: 7 # in seconds
+messages:
+  no permission: "&cYou do not have permission for that command!"

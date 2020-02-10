@@ -1,0 +1,8 @@
+name: CosmicTeleport
+version: ${project.version}
+main: me.puyodead1.cosmicteleport.CosmicTeleport
+depend: [Essentials]
+authors: [Puyodead1]
+commands:
+  spawn:
+    description: Teleport player to world spawn
